@@ -1,0 +1,26 @@
+{
+  "name": "catfacts",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.1",
+    "bootstrap": "^3.3.7",
+    "bootstrap-validator": "^0.11.5",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "^2.5.2",
+    "express": "~4.13.4",
+    "express-ejs-layouts": "^2.2.0",
+    "font-awesome": "^4.6.3",
+    "hjs": "~0.0.6",
+    "http": "0.0.0",
+    "jade": "^1.11.0",
+    "jquery": "^3.1.1",
+    "lodash-node": "^3.10.2",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.0"
+  }
+}

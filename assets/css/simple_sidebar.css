@@ -1,0 +1,51 @@
+/* Sidebar Styles */
+.sidebar-header{
+    padding-bottom: 10px;
+    color: #fff;
+    background: none;
+    font-size: 18px;
+
+}
+
+.sidebar-header span{
+        text-decoration: underline;
+}
+
+.sidebar-header-selected{
+    color: #fff;
+}
+
+.sidebar-header a {
+    color: #999999;
+}
+
+.sidebar-header a:hover{
+    background: none;
+    width: auto;
+}
+
+.sidebar-item{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: auto;
+    color: #999999;
+}
+
+.sidebar-item:hover{
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+}
+
+.sidebar-selected{
+    color: #fff;
+}
+
+.sidebar-selected a {
+        color: #fff;
+
+    text-decoration: underline;
+}
+.sidebar-item:hover a{
+}
+
+

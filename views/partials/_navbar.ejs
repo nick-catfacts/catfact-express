@@ -1,0 +1,50 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+              aria-expanded="false">
+
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <div style="overflow:hidden; white-space: nowrap;">
+            <a class="navbar-brand" href="/">
+              Welcome to <%= config.site.title %>!
+            </a>
+        </div>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+        <% if(is_login) { %>
+          <a href="/dashboard">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span> Dashboard </span>
+          </a>
+        </li>
+          <li>
+            <a href="#" onclick="$('#mutant_logout').submit()">
+              <i class="fa fa-power-off" aria-hidden="true"></i>
+              <span> Logout </span>
+            </a>
+          </li>
+        <%} else {%>
+          <li>
+            <a href="/login">
+              <i class="fa fa-space-shuttle" aria-hidden="true"></i>
+              <span>Login/Sign up</span>
+            </a>
+          </li>
+        <%} %>
+      </ul>
+    </div><!--/.navbar-collapse-->
+
+  </div><!--/.container-fluid-->
+</nav>
