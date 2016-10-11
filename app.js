@@ -6,12 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var express_layouts = require('express-ejs-layouts');
 var http = require('http');
-
+var User = require('catfact-ecommerce').model
 
 
 // declare app
 var app = express();
-
 
 // Static assets
 app.use('/vendor/jquery',    express.static('node_modules/jquery/dist')); // redirect JS jQuery
@@ -42,22 +41,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Site Variables
 // Static Global
 app.locals.config = require('./config');;
-// Per request/response
+
+// Single request/response variables
 app.use(function(req, res, next){
-      res.locals.is_login = false;
-      next();
+      res.locals.is_login = true;
+      User.find({username: 'Cali75@yahoo.com'}).then(function(user){
+        res.locals.current_user = user
+        next();
+      })
 })
 
+// routes are located in the root pages directory
+app.use('/', require('./pages/routes'));
 
-
-
-// Routes
-app.get('/test', function(req, res) {
+// Test Route
+app.get('/', function(req, res) {
   console.log('This is a test page!');
   res.render('public/test');
 });
-
-
 
 
 
