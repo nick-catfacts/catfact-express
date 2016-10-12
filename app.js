@@ -45,7 +45,10 @@ app.locals.config = require('./config');;
 // Single request/response variables
 app.use(function(req, res, next){
       res.locals.is_login = true;
-      User.find({username: 'Cali75@yahoo.com'}).then(function(user){
+      res.locals.app_root = __dirname;
+
+      // Note the lean function is required to return a non-mongoose/pure JS object.
+      User.findOne({username: 'Cali75@yahoo.com'}).lean().then(function(user){
         res.locals.current_user = user
         next();
       })
@@ -57,7 +60,7 @@ app.use('/', require('./pages/routes'));
 // Test Route
 app.get('/', function(req, res) {
   console.log('This is a test page!');
-  res.render('public/test');
+  res.render('public/test', {my_root: app.locals.root});
 });
 
 

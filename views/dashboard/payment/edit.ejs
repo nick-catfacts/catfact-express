@@ -1,0 +1,24 @@
+<div class ="container-fluid">
+  <div class="row">
+
+
+    <div class="col-md-12">
+    <h4> Add a card </h4>
+    <% include ./_stripe_add_card_form %>
+    </div>
+  </div>
+
+  <div class ="row">
+    <div class="col-md-12">
+
+      <form action="/dashboard/payment/delete" method="post">
+        <input type="hidden" name="charge_amt" value="500">
+        <button type="submit" class="btn btn-success"> Delete Payment </button>
+      </form>
+
+    </div>
+  </div>
+
+
+
+</div>

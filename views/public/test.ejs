@@ -1,3 +1,9 @@
 Sup
 
-<%= JSON.stringify(current_user) %>
+<div>
+Local Directory : <%= my_root %>
+</div>
+
+<pre>
+<%- JSON.stringify(current_user, null, '\t') %>
+</pre>

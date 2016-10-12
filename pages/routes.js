@@ -3,17 +3,20 @@
 
 var express = require('express');
 var router = express.Router();
-
+var script_root = require('app-root-path') + "/pages" // the app-root plus the pages directory
 
 //dashboard front  page
-router.use('/dashboard', require('./dashboard/index'));
+router.use('/dashboard', require(script_root + '/dashboard/index'));
 
-// // account info
-// router.use('/dashboard/account', require('./dashboard/account/index'));
-// router.use('/dashboard/account/delete', require('./dashboard/account/delete'));
+// add messages
+router.use('/dashboard/account/add', require(script_root + '/dashboard/account/add'));
+
+
+// edit payment
+router.use('/dashboard/payment/edit', require(script_root + '/dashboard/payment/edit'));
+router.use('/dashboard/payment/delete', require(script_root+ '/dashboard/payment/delete'));
 
 // // payment CRUD
-// router.use('/dashboard/payment', require('./dashboard/payment/index'));
 // router.use('/dashboard/payment/add', require('./dashboard/payment/add'));
 // router.use('/dashboard/payment/delete', require('./dashboard/payment/delete'));
 

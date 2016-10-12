@@ -1,0 +1,13 @@
+<h4 style="text-decoration:underline;"> Payment Information </h4>
+<a href="/dashboard/payment/edit">Edit Payment information</a>
+<table class="table-condensed table">
+  <% for (var key in payment_info) {  %>
+    <% if (payment_info.hasOwnProperty(key)) { %>
+    <tr>
+      <td> <%= key %> </td>
+      <td> <%= payment_info[key] %> </td>
+    </tr>
+    <% } %>
+  <% } %>
+</table>
+

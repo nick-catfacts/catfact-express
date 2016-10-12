@@ -1,0 +1,15 @@
+<table class="table table-condensed">
+  <tr style = "border-bottom:0px solid ">
+    <% for (var i = 0; i < recipient_headers.length; i++) { %>
+      <th><%= recipient_headers[i] %></th>
+    <% } %>
+  </tr>
+
+    <% for (var i = 0; i < recipients.length; i++) { %>
+      <tr>
+           <% Object.keys(recipients[i]).forEach(function(key) { %>
+            <td> <%= recipients[i][key] %></td>
+          <% }); %>
+      </tr>
+    <% } %>
+</table>
