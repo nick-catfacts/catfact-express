@@ -8,10 +8,10 @@ var app_root = require('app-root-path')
 router.get('/', function(req, res) {
 
   var username =  res.locals.current_user.username;
-  var recipients = res.locals.current_user.recipients;
-  var recipient_headers = lodash.keys(recipients[0])
+  var recipients = res.locals.current_user.get_recipients();
+  var recipient_headers = lodash.keys(recipients[0]);
   var messages_remaining = res.locals.current_user.account.messages_remaining;
-  var payment_info = lodash.omit(res.locals.current_user.credit_card[0], ['_id', 'stripe_id'])
+  var payment_info = lodash.omit(res.locals.current_user.credit_card[0].toObject(), ['_id', 'stripe_id']);
 
 
   res.render(app_root + '/views/dashboard/index', {
@@ -26,3 +26,5 @@ router.get('/', function(req, res) {
 
 // Exports
 module.exports = router;
+
+

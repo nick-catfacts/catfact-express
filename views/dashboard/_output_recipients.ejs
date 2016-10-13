@@ -1,8 +1,10 @@
 <table class="table table-condensed">
   <tr style = "border-bottom:0px solid ">
+
     <% for (var i = 0; i < recipient_headers.length; i++) { %>
       <th><%= recipient_headers[i] %></th>
     <% } %>
+    <th></th>
   </tr>
 
     <% for (var i = 0; i < recipients.length; i++) { %>
@@ -10,6 +12,23 @@
            <% Object.keys(recipients[i]).forEach(function(key) { %>
             <td> <%= recipients[i][key] %></td>
           <% }); %>
+          <td>
+            <a href="/dashboard/recipients/update/<%= recipients[i].phone %>"> Edit </a> |
+            <form style="display:inline"
+                class="form-inline"
+                action="/dashboard/recipients/delete"
+                method="post">
+                <input type="hidden" name="id" value="<%= recipients[i].phone %>"/>
+                <button
+                  class="btn-link"
+                  style="text-decoration: underline;"
+                  type="submit">
+                      Delete
+                </button>
+            </form>
+          </td>
       </tr>
     <% } %>
+    <tr><td><a href = "/dashboard/recipients/new"> Add New Recipient </a></td></tr>
 </table>
+

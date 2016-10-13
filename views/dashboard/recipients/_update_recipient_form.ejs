@@ -1,0 +1,33 @@
+<form action="/dashboard/recipients/update" method="POST" id="update-recipient-form">
+  <span class="errors"></span>
+
+  <div class="form-row">
+    <label>
+      <span>First Name</span>
+      <input type="text" name="first_name" value="<%= recipient.first_name %>" size="20">
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Last Name</span>
+      <input type="text" name="last_name" value="<%= recipient.last_name %>" size="20" >
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Phone Number</span>
+      <input type="text" name="phone" value="<%= recipient.phone %>" size="20" >
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Interval</span>
+      <input type="text" name="interval" value="<%= recipient.interval %>" size="4" >
+    </label>
+  </div>
+
+  <input type="submit" class="submit">
+</form>

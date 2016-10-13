@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var app_root = require('app-root-path')
 var User = require('catfact-ecommerce').model
 
 
@@ -7,17 +8,12 @@ router.post('/', function(req, res) {
   var current_user_name = res.locals.current_user.username
 
   User.findOne({username: current_user_name}).then(function(user){
-    return user.buy_messages(req.body.charge_amt, process.env.COST_PER_MESSAGE);
+    return user.remove_recipient(req.body.id);
   }).then(function(){
     res.redirect("/dashboard");
-  }).catch(function(err){
-    res.redirect("/dashboard")
   })
 
 })
 
-
-
-
-// Exports
+  // Exports
 module.exports = router;

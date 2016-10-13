@@ -48,7 +48,7 @@ app.use(function(req, res, next){
       res.locals.app_root = __dirname;
 
       // Note the lean function is required to return a non-mongoose/pure JS object.
-      User.findOne({username: 'Cali75@yahoo.com'}).lean().then(function(user){
+      User.findOne({username: 'Elijah.Bailey51@hotmail.com'}).then(function(user){
         res.locals.current_user = user
         next();
       })
