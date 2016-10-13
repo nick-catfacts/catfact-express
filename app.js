@@ -6,7 +6,15 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var express_layouts = require('express-ejs-layouts');
 var http = require('http');
-var User = require('catfact-ecommerce').model
+
+var db_name = 'catfacts'
+var mongodb_connection_string = 'mongodb://localhost/' + db_name;
+
+if(process.env.OPENSHIFT_MONGODB_DB_URL){
+  mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
+}
+
+var User = require('catfact-ecommerce')(process.env.STRIPE_SECRET_KEY, mongodb_connection_string).model
 
 
 // declare app
@@ -54,7 +62,7 @@ app.use(function(req, res, next){
       })
 })
 
-// routes are located in the root pages directory
+// routes are located in the root/pages directory
 app.use('/', require('./pages/routes'));
 
 // Test Route
