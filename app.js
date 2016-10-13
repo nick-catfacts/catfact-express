@@ -8,13 +8,15 @@ var express_layouts = require('express-ejs-layouts');
 var http = require('http');
 
 var db_name = 'catfacts'
-var mongodb_connection_string = 'mongodb://localhost/' + db_name;
-
 if(process.env.OPENSHIFT_MONGODB_DB_URL){
-  mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
+  module.mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
 }
+else{
+  module.mongodb_connection_string= 'mongodb://localhost/' + db_name;
+}
+module.STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 
-var User = require('catfact-ecommerce')(process.env.STRIPE_SECRET_KEY, mongodb_connection_string).model
+var User = require('catfact-ecommerce').model
 
 
 // declare app
