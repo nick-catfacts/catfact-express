@@ -11,7 +11,8 @@ var init =  function(passport){
             console.log("Passport signup is called!!")
 
             findOrCreateUser = function(){
-                // find a user in Mongo with provided username
+
+                // refactor this crap to a promise...
                 User.findOne({ 'username' :  username }, function(err, user) {
                     // In case of any error, return using the done method
                     if (err){
@@ -31,7 +32,7 @@ var init =  function(passport){
                             return done(null, user);
                         })
                         .catch(function(err){
-                            console.log('Error in Saving user: '+err);
+                            console.log('Error in Creating New user: '+err);
                             throw err;
                         });
                     }
