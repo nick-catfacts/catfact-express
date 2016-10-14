@@ -22,7 +22,7 @@ var init = function(passport){
   /* Handle Login POST */
   router.post('/login', passport.authenticate('login', {
      successRedirect: '/dashboard',
-     failureRedirect: '/auth/signup',
+     failureRedirect: '/auth/login',
      failureFlash : true
    }));
 

@@ -16,6 +16,7 @@ var passport = require('passport');
 var db_name = 'catfacts'
 if(process.env.OPENSHIFT_MONGODB_DB_URL){
   module.mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
+  console.log("CONNECT STRING: " + module.mongodb_connection_string)
 }
 else{
   module.mongodb_connection_string= 'mongodb://localhost/' + db_name;
