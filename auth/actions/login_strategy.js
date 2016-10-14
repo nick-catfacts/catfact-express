@@ -34,6 +34,7 @@ var init = function(passport){
                         return done(null, user);
                     })
                     .catch(function(err){
+                        console.log("Error in login_strategy.init.findUser")
                         console.log(err);
                         return done(err);
                     });
@@ -51,7 +52,7 @@ var init = function(passport){
         }
         catch(err){
             console.log("Error in isValidPassword method:")
-            throw err
+            return false;
         }
     }
 
