@@ -32,6 +32,7 @@ var init = function(passport){
                     }
                     // User and password both match, return user from done method
                     // which will be treated like success
+                    console.log("Successful Login!")
                     return done(null, user);
                 }
             );
