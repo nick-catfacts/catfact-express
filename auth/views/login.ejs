@@ -1,8 +1,11 @@
 <div class="container">
 
+
+
 <div class="col-sm-6 col-sm-offset-3">
 
-    <h1><span class="fa fa-sign-in"></span> Login</h1>
+    <h1><span class="fa fa-sign-in"></span> Login
+    </h1>
 
     <!-- LOGIN FORM -->
     <form action="/auth/login" method="post">
@@ -16,6 +19,9 @@
         </div>
 
         <button type="submit" class="btn btn-warning btn-lg">Login</button>
+        <% if (message) { %>
+            <span class="alert alert-danger" role="alert" style="font-size: 16px; float:right"><%=message%></span>
+        <% } %>
     </form>
 
     <hr>

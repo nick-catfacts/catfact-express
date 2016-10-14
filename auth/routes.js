@@ -5,27 +5,24 @@ var app_root = require('app-root-path')
 
 
 var init = function(passport){
+
 // auth routes
-/* GET login page. */
   router.get('/login', function(req, res) {
-      // Display the Login page with any flash message, if any
-    res.render(app_root + '/auth/views/login');
+    var flash = req.flash()
+    message = flash.error || flash.message
+    res.render(app_root + '/auth/views/login', {message: message} );
   });
 
-  /* GET Registration Page */
   router.get('/signup', function(req, res){
-    res.render(app_root + '/auth/views/signup');
+    res.render(app_root + '/auth/views/signup', {message: req.flash().error} );
   });
 
-  /* Handle Login POST */
   router.post('/login', passport.authenticate('login', {
      successRedirect: '/dashboard',
      failureRedirect: '/auth/login',
      failureFlash : true
    }));
 
-
-  /* Handle Registration POST */
   router.post('/signup', passport.authenticate('signup', {
     successRedirect: '/dashboard',
     failureRedirect: '/auth/signup',
@@ -37,7 +34,6 @@ var init = function(passport){
   // //   res.render('home', { user: req.user });
   // // });
 
-  // /* Handle Logout */
   router.get('/signout', function(req, res) {
    req.logout();
    res.redirect('/');
