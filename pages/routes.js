@@ -3,7 +3,12 @@
 
 var express = require('express');
 var router = express.Router();
-var script_root = require('app-root-path') + "/pages" // the app-root plus the pages directory
+var app_root = require('app-root-path')
+var script_root = app_root +"/pages"
+var views_root = app_root + "/views"
+
+// var auth_routes = require(app_root + '/auth/routes')
+// router.use('/auth', auth_routes )
 
 //dashboard front  page
 router.use('/dashboard', require(script_root + '/dashboard/index'));
@@ -21,19 +26,6 @@ router.use('/dashboard/recipients/new', require(script_root +'/dashboard/recipie
 router.use('/dashboard/recipients/delete', require(script_root + '/dashboard/recipients/delete'));
 router.use('/dashboard/recipients/update', require(script_root + '/dashboard/recipients/update'));
 //router.use('/dashboard/recipients/update', require(script_root + '/dashboard/recipients/update'));
-
-
-
-// // payment CRUD
-// router.use('/dashboard/payment/add', require('./dashboard/payment/add'));
-
-// // recipient CRUD
-// router.use('/dashboard/recipients', require('./dashboard/recipients/index'))
-//
-// router.use('/dashboard/recipients/delete', require('./dashboard/recipients/delete'));
-
-// // interval
-// router.use('/dashboard/interval/change', require('./dashboard/interval/change'));
 
 
 

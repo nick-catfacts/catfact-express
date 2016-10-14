@@ -6,6 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var express_layouts = require('express-ejs-layouts');
 var http = require('http');
+var flash    = require('connect-flash');
+var session = require('express-session');
+var app_root = require('app-root-path');
+var passport = require('passport');
+
+
 
 var db_name = 'catfacts'
 if(process.env.OPENSHIFT_MONGODB_DB_URL){
@@ -16,8 +22,9 @@ else{
 }
 module.STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 
-var User = require('catfact-ecommerce').model
 
+// my user model
+var User = require('catfact-ecommerce').model
 
 // declare app
 var app = express();
@@ -39,18 +46,24 @@ app.set('layout', 'layouts/layout');
 
 
 
-// general app setup, logging, body, cookie parser, etc.
+// general app setup, logging, body, cookie parser, sessions, flash etc.
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(flash());
 
+// configure passport which relies up several above (session,bodyparser, flash,etc)
+app.use(passport.initialize());
+app.use(passport.session());
 
+var passport_app = require(app_root + '/auth/app');
+passport_app.init(passport)
 
 // Site Variables
 // Static Global
-app.locals.config = require('./config');;
+app.locals.config = require('./config/config');;
 
 // Single request/response variables
 app.use(function(req, res, next){
