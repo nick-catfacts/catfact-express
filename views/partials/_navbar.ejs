@@ -15,7 +15,10 @@
       </button>
        <div style="overflow:hidden; white-space: nowrap;">
             <a class="navbar-brand" href="/">
-              Welcome to <%= config.site.title %>!
+              Welcome to <%= config.site.title %>
+              <% if (typeof current_user !== 'undefined') { %>
+              <%= current_user.username %>!
+              <%} %>
             </a>
         </div>
     </div>
@@ -23,7 +26,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li>
-        <% if (typeof is_login !== 'undefined') { %>
+        <% if (typeof current_user !== 'undefined') { %>
           <a href="/dashboard">
             <i class="fa fa-user" aria-hidden="true"></i>
             <span> Dashboard </span>
