@@ -45,8 +45,14 @@ var init = function(passport){
 
 
     var isValidPassword = function(user, password){
-        console.log("Testing Password")
-        return bCrypt.compareSync(password, user.password);
+        try{
+            console.log("Testing Password")
+            return bCrypt.compareSync(password, user.password);
+        }
+        catch(err){
+            console.log("Error in isValidPassword method:")
+            throw err
+        }
     }
 
 }
