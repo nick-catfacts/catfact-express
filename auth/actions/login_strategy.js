@@ -10,11 +10,13 @@ var init = function(passport){
         function(req, username, password, done) {
             // check in mongo if a user with username exists or not
             console.log("Entering the Login  Strategy")
-            console.log("User:" + user)
-            console.log("Err: " + err)
+
 
             User.findOne({ 'username' :  username },
                 function(err, user) {
+
+                    console.log("User:" + user)
+                    console.log("Err: " + err)
                     // In case of any error, return using the done method
                     if (err){
                         console.log(err)
@@ -42,7 +44,7 @@ var init = function(passport){
 
 
     var isValidPassword = function(user, password){
-        console.log("testing password")
+        console.log("Testing Password")
         return bCrypt.compareSync(password, user.password);
     }
 
