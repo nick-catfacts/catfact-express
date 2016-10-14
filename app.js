@@ -80,8 +80,12 @@ app.use('/auth', auth_routes.init(passport));
 // Single request/response variables
 app.use(function(req, res, next){
 
+  if(req.user){
     res.locals.current_user = req.user;
     next()
+  } else{
+    next()
+  }
 
       // if(req.user){
       //   res.locals.is_login = true;
