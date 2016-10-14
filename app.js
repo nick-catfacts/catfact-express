@@ -101,8 +101,7 @@ app.use(function(req, res, next){
 
 
 // routes are located in the root/pages directory
-var app_routes = require(app_root + '/pages/routes')
-app.use('/', app_routes.init(passport));
+app.use('/', require(app_root + '/pages/routes'));
 
 // Test Route
 app.get('/', function(req, res) {

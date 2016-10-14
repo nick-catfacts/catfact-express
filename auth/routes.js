@@ -4,8 +4,6 @@ var app_root = require('app-root-path')
 
 
 
-
-
 var init = function(passport){
 // auth routes
 /* GET login page. */
