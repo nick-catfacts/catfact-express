@@ -38,7 +38,10 @@ var init = function(passport){
                             console.log("Successful Login!")
                             return done(null, user);
                         }
-                    );
+                    )
+                    .catch(function(err){
+                        console.log(err);
+                    });
             }
 
             process.nextTick(findUser);
