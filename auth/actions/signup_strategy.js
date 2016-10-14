@@ -45,7 +45,14 @@ var init =  function(passport){
 
     // Generates hash using bCrypt
     var createHash = function(password){
-        return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+        try{
+            console.log("Encrypting Password")
+            return bCrypt.hashSync(password, bCrypt.genSaltSync(10), null);
+        }
+        catch(err){
+            console.log("Error in createHash method:")
+            throw err;
+        }
     }
 }
 
