@@ -67,9 +67,8 @@ app.use(flash());
 app.locals.config = require('./config/config');;
 
 
-// configure passport which relies up several above (session,bodyparser, flash,etc)
-// migrate this nightmare into it's own module at some point
-// also figure out  how to  put the raw mongoose object in req.body instead of a json version.
+// configure passport which relies up several above (session, bodyparser, flash,etc)
+// migrate this pile of mush into it's own nice contained module at some point
 app.use(passport.initialize());
 app.use(passport.session());
 var passport_app = require(app_root + '/auth/app');
@@ -102,7 +101,8 @@ app.use(function(req, res, next){
 
 
 // routes are located in the root/pages directory
-app.use('/', require('./pages/routes'));
+var app_routes = require(app_root + '/pages/routes')
+app.use('/', app_routes.init(passport));
 
 // Test Route
 app.get('/', function(req, res) {

@@ -39,11 +39,12 @@ var init = function(passport){
   // //   res.render('home', { user: req.user });
   // // });
 
-  // // /* Handle Logout */
-  // // router.get('/signout', function(req, res) {
-  // //   req.logout();
-  // //   res.redirect('/');
-  // // });
+  // /* Handle Logout */
+  router.get('/signout', function(req, res) {
+   req.logout();
+   res.redirect('/');
+  });
+
   return router;
 }
 
