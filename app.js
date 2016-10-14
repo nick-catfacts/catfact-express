@@ -56,12 +56,6 @@ app.use(session({ secret: process.env.SESSION_SECRET }));
 app.use(flash());
 
 
-// app.use(function(req,res,next){
-//   res.locals.is_login = false;
-//   next()
-// })
-
-
 // Site Variables
 // Static Global
 app.locals.config = require('./config/config');;
@@ -86,6 +80,7 @@ app.use(function(req, res, next){
     next()
   }
 
+// make sure app works before deleting this
       // if(req.user){
       //   res.locals.is_login = true;
       //   User.findOne({username: req.user.username}).then(function(user){
