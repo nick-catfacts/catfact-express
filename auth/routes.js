@@ -2,6 +2,11 @@ var express = require('express');
 var router = express.Router();
 var app_root = require('app-root-path')
 
+
+
+
+
+var init = function(passport){
 // auth routes
 /* GET login page. */
   router.get('/login', function(req, res) {
@@ -14,20 +19,20 @@ var app_root = require('app-root-path')
     res.render(app_root + '/auth/views/signup');
   });
 
-  // /* Handle Login POST */
-  // // router.post('/login', passport.authenticate('login', {
-  // //   successRedirect: '/home',
-  // //   failureRedirect: '/',
-  // //   failureFlash : true
-  // // }));
+  /* Handle Login POST */
+  router.post('/login', passport.authenticate('login', {
+     successRedirect: '/dashboard',
+     failureRedirect: '/auth/signup',
+     failureFlash : true
+   }));
 
 
-  // /* Handle Registration POST */
-  // router.post('/signup', passport.authenticate('signup', {
-  //   successRedirect: '/dashboard',
-  //   failureRedirect: '/auth/signup',
-  //   failureFlash : true
-  // }));
+  /* Handle Registration POST */
+  router.post('/signup', passport.authenticate('signup', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/auth/signup',
+    failureFlash : true
+  }));
 
   // // /* GET Home Page */
   // // router.get('/home', isAuthenticated, function(req, res){
@@ -39,6 +44,10 @@ var app_root = require('app-root-path')
   // //   req.logout();
   // //   res.redirect('/');
   // // });
+  return router;
+}
 
 
-module.exports = router
+module.exports = {
+    init:init
+  }

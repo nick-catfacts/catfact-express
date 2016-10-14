@@ -25,14 +25,14 @@ var init =  function(passport){
                     } else {
                         // if there is no user with that email
                         // create the user
-                        User.create_new(username, password)
-                        .then(function(err, user){
-                            if (err){
-                                console.log('Error in Saving user: '+err);
-                                throw err;
-                            }
+                        User.create_new(username, createHash(password))
+                        .then(function(user){
                             console.log('User Registration successful');
                             return done(null, user);
+                        })
+                        .catch(function(err){
+                            console.log('Error in Saving user: '+err);
+                            throw err;
                         });
                     }
                 });

@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li>
-        <% if(is_login) { %>
+        <% if (typeof is_login !== 'undefined') { %>
           <a href="/dashboard">
             <i class="fa fa-user" aria-hidden="true"></i>
             <span> Dashboard </span>

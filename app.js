@@ -54,28 +54,47 @@ app.use(cookieParser());
 app.use(session({ secret: process.env.SESSION_SECRET }));
 app.use(flash());
 
-// configure passport which relies up several above (session,bodyparser, flash,etc)
-app.use(passport.initialize());
-app.use(passport.session());
 
-var passport_app = require(app_root + '/auth/app');
-passport_app.init(passport)
+// app.use(function(req,res,next){
+//   res.locals.is_login = false;
+//   next()
+// })
+
 
 // Site Variables
 // Static Global
 app.locals.config = require('./config/config');;
 
+
+// configure passport which relies up several above (session,bodyparser, flash,etc)
+// migrate this nightmare into it's own module at some point
+// also figure out  how to  put the raw mongoose object in req.body instead of a json version.
+app.use(passport.initialize());
+app.use(passport.session());
+var passport_app = require(app_root + '/auth/app');
+passport_app.init(passport)
+var auth_routes = require(app_root + '/auth/routes');
+app.use('/auth', auth_routes.init(passport));
+
 // Single request/response variables
 app.use(function(req, res, next){
-      res.locals.is_login = true;
-      res.locals.app_root = __dirname;
 
-      // Note the lean function is required to return a non-mongoose/pure JS object.
-      User.findOne({username: 'Cierra.Hayes@gmail.com'}).then(function(user){
-        res.locals.current_user = user
-        next();
-      })
+    res.locals.current_user = req.user;
+    next()
+
+      // if(req.user){
+      //   res.locals.is_login = true;
+      //   User.findOne({username: req.user.username}).then(function(user){
+      //     res.locals.current_user = user
+      //     next();
+      //   })
+      // }
+      // else{
+      //   next()
+      // }
 })
+
+
 
 // routes are located in the root/pages directory
 app.use('/', require('./pages/routes'));

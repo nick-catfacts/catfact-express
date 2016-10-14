@@ -8,6 +8,7 @@ router.post('/', function(req, res) {
   .then(function(){
     res.redirect("/dashboard");
   }).catch(function(err){
+    console.log(err)
     res.redirect("/dashboard")
   })
 

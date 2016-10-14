@@ -7,8 +7,6 @@ var app_root = require('app-root-path')
 var script_root = app_root +"/pages"
 var views_root = app_root + "/views"
 
-// var auth_routes = require(app_root + '/auth/routes')
-// router.use('/auth', auth_routes )
 
 //dashboard front  page
 router.use('/dashboard', require(script_root + '/dashboard/index'));
