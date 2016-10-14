@@ -9,10 +9,6 @@ var signup_strategy = require(app_root + '/auth/actions/signup_strategy')
 
 var init = function(passport){
 
-  // configure passport which relies up several above (session,bodyparser, flash,etc)
-  app.use(passport.initialize());
-  app.use(passport.session());
-
   serializers.init(passport);
   login_strategy.init(passport)
   signup_strategy.init(passport);
