@@ -11,6 +11,32 @@ $(function() {
     return false;
   });
 
+  $('body').on('click', '.buy_messages', function (e) {
+      $(this.form).submit();
+      $('#myModal').modal('hide');
+  });
+
+  $('#myModal').on('show.bs.modal', function (e) {
+
+      // get the button and modal element
+      var $button = $(e.relatedTarget);
+      var $modal = $(this)
+
+      // Add hidden input element with values set on modal open
+      var amount = $button.data('amount-cents');
+      var messages = $button.data('messages');
+      $modal.find('#modal-form').append('<input type="hidden" id="charge-input" name="charge_amt" value="' + amount + '" />');
+      // Add form text
+      amount = parseInt(amount) / 100;
+      $modal.find('.modal-body').text("Please confirm a charge of $" + amount + " to buy " + messages + " messages.");
+  });
+
+  $('#myModal').on('hide.bs.modal', function (e) {
+    // remove hidden from element on modal close
+    var $modal = $(this)
+    $modal.find('#charge-input').remove()
+  });
+
   function stripeResponseHandler(status, response) {
   // Grab the form:
     var $form = $('#payment-form');
@@ -33,4 +59,5 @@ $(function() {
       $form.get(0).submit();
     }
   };
+
 });
