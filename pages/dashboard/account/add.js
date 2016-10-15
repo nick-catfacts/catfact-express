@@ -9,6 +9,8 @@ router.post('/', function(req, res) {
     res.redirect("/dashboard");
   }).catch(function(err){
     console.log(err)
+    // add flash flash_message
+    req.flash('flash_message', err.message)
     res.redirect("/dashboard")
   })
 

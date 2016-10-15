@@ -5,5 +5,7 @@ Local Directory : <%= my_root %>
 </div>
 
 <pre>
-<%- JSON.stringify(current_user, null, '\t') %>
+<% if (typeof current_user !== 'undefined') { %>
+  <%- JSON.stringify(current_user, null, '\t') %>
+<% } %>
 </pre>

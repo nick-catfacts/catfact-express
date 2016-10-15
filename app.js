@@ -73,6 +73,15 @@ app.use('/auth', auth_routes.init(passport));
 // Single request/response variables
 app.use(function(req, res, next){
 
+  // flash errors/messages present
+  var flash = req.flash('flash_message')
+  console.log("flash msg" + flash)
+
+  if(flash.length > 0){
+    console.log("We have a flash message!!")
+    res.locals.flash_message = flash.toString()
+  }
+
   if(req.user){
     res.locals.current_user = req.user;
     next()
@@ -101,8 +110,9 @@ app.use('/', require(app_root + '/pages/routes'));
 // Test Route
 app.get('/', function(req, res) {
   console.log('This is a test page!');
-  res.render('public/test', {my_root: app.locals.root});
+  res.render('public/test', {my_root: app_root});
 });
+
 
 
 

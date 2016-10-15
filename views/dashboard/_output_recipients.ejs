@@ -13,7 +13,7 @@
             <td> <%= recipients[i][key] %></td>
           <% }); %>
           <td>
-            <a href="/dashboard/recipients/update/<%= recipients[i].phone %>"> Edit </a> |
+            <a href="/dashboard/recipients/update/<%= recipients[i]._id %>"> Edit </a> |
             <form style="display:inline"
                 class="form-inline"
                 action="/dashboard/recipients/delete"

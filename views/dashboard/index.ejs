@@ -1,4 +1,6 @@
 <div class ="container-fluid">
+
+
   <div class="row">
     <div class="col-md-8">
         <%# Messages remaining pane %>
@@ -31,6 +33,19 @@
       <% include ./_output_recipients %>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-offset-3 col-md-6">
+      <% if (typeof flash_message !== 'undefined') { %>
+          <div class="alert alert-danger"
+          role="alert"
+          style="font-size: 16px; text-align: center">
+              <%=flash_message%>
+          </div>
+      <% } %>
+    </div>
+  </div>
+
 
 
 </div>

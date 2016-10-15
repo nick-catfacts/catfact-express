@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
   console.log("RESPOSE:" + res)
 
   var username =  res.locals.current_user.username;
-  var recipients = res.locals.current_user.get_recipients();
+  var recipients = res.locals.current_user.recipients.toObject();
   var recipient_headers = lodash.keys(recipients[0]);
   var messages_remaining = res.locals.current_user.account.messages_remaining;
   var payment_info = lodash.omit(res.locals.current_user.credit_card[0], ['_id', 'stripe_id']);
