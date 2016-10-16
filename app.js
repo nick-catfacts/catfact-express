@@ -73,6 +73,9 @@ app.use('/auth', auth_routes.init(passport));
 // Single request/response variables
 app.use(function(req, res, next){
 
+  res.locals.dashboard_page_active = "";
+  res.locals.payment_page_active = "";
+
   // flash errors/messages present
   var flash = req.flash('flash_message')
   console.log("flash msg" + flash)

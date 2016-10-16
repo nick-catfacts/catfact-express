@@ -2,7 +2,9 @@
   <tr style = "border-bottom:0px solid ">
 
     <% for (var i = 0; i < recipient_headers.length; i++) { %>
-      <th><%= recipient_headers[i] %></th>
+        <% if(recipient_headers[i] !== '_id'){ %>
+          <th><%= recipient_headers[i] %></th>
+        <% } %>
     <% } %>
     <th></th>
   </tr>
@@ -10,7 +12,9 @@
     <% for (var i = 0; i < recipients.length; i++) { %>
       <tr>
            <% Object.keys(recipients[i]).forEach(function(key) { %>
-            <td> <%= recipients[i][key] %></td>
+            <% if(key !== "_id"){ %>
+              <td> <%= recipients[i][key] %></td>
+            <% } %>
           <% }); %>
           <td>
             <a href="/dashboard/recipients/update/<%= recipients[i]._id %>"> Edit </a> |

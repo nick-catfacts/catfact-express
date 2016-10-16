@@ -15,7 +15,8 @@ if(res.locals.current_user.credit_card[0]){
   var payment_info = lodash.omit(credit_card, ['_id', 'id']);
 
   res.render(app_root + '/views/dashboard/payment/index', {
-    payment_info: payment_info
+    payment_info: payment_info,
+    payment_page_active: "active"
   });
 });
 

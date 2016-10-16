@@ -1,11 +1,4 @@
-Sup
-
-<div>
-Local Directory : <%= my_root %>
+<div style = "text-align: center;">
+<div style="font-family: 'Montserrat', sans-serif; font-size: 60px"> WELCOME TO CAT FACTS! </div>
+<div> Please <a href="/auth/login"> login </a> or <a href="/auth/signup">signup</a> to continue! </div>
 </div>
-
-<pre>
-<% if (typeof current_user !== 'undefined') { %>
-  <%- JSON.stringify(current_user, null, '\t') %>
-<% } %>
-</pre>

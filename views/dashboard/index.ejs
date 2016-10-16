@@ -1,36 +1,5 @@
 <div class ="container-fluid">
 
-
-<hr>
-
-  <%# Messages remaining pane %>
-  <div class = "row">
-    <div class="col-md-12">
-      <h4 style="margin-top:0px; text-decoration: underline;">
-        You have <%= messages_remaining %> cat facts remaining. %>
-      </h4>
-    </div>
-  </div>
-
-  <%# Increase Messages Pane %>
-  <div class="row">
-        <div class="col-md-12">
-          <% include ./_increase_msg_buttons %>
-        </div>
-  </div>
-
-<hr>
-
-  <%# Recipients Pane %>
-  <div class ="row">
-    <div class="col-md-12">
-      <h4 style="text-decoration:underline;">Your Cat Facts recipients </h4>
-      <% include ./_output_recipients %>
-    </div>
-  </div>
-
-<hr>
-
     <div class="row">
       <div class="col-md-offset-3 col-md-6">
         <% if (typeof flash_message !== 'undefined') { %>
@@ -42,6 +11,42 @@
         <% } %>
       </div>
     </div>
+
+
+
+  <%# Recipients Pane %>
+  <div class ="row">
+    <div class="col-md-12" style="text-align: center">
+        <h4>
+          <span style="border-bottom: 0px solid">
+            Your cat facts recipients
+          </span>
+        </h4>
+    </div>
+  </div>
+  <div class="col-md-8 col-md-offset-2">
+  <hr>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <% include ./_output_recipients %>
+    </div>
+  </div>
+
+
+
+
+  <%# Increase Messages Pane %>
+  <div class="row">
+        <div class="col-md-12">
+          <% include ./_increase_msg_buttons %>
+        </div>
+  </div>
+
+
+
+
+
 
 
 

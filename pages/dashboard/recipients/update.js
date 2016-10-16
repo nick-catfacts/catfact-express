@@ -8,7 +8,9 @@ router.get('/:recipient_id', function(req, res){
   var recipient_id = req.params.recipient_id
   recipient = current_user.get_recipient(recipient_id)
   if(recipient){
-    res.render(app_root + '/views/dashboard/recipients/update', {recipient: recipient});
+    res.render(app_root + '/views/dashboard/recipients/update', {
+      recipient: recipient
+    });
   }
   else{
     res.redirect('/dashboard')

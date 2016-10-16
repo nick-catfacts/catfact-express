@@ -4,7 +4,7 @@ var app_root = require('app-root-path')
 
 
 router.get('/', function(req, res) {
-  res.render(app_root + '/views/dashboard/payment/update');
+  res.render(app_root + '/views/dashboard/payment/update', {payment_page_active: "active"});
 });
 
 

@@ -19,11 +19,11 @@ router.get('/', function(req, res) {
     recipients: recipients,
     messages_remaining:messages_remaining,
     recipient_headers: recipient_headers,
+    dashboard_page_active: "active"
     });
 });
 
 
 // Exports
 module.exports = router;
-
 
