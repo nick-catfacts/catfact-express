@@ -1,3 +1,10 @@
 body:{
   font-family: 'Montserrat', sans-serif
 }
+
+
+@media (max-width: 767px) {
+    .btn-vert-block + .btn-vert-block {
+        margin-top: 10px;
+    }
+}
