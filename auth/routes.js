@@ -14,7 +14,9 @@ var init = function(passport){
   });
 
   router.get('/signup', function(req, res){
-    res.render(app_root + '/auth/views/signup', {message: req.flash().error} );
+    var flash = req.flash()
+    message = flash.error || flash.message
+    res.render(app_root + '/auth/views/signup', {message: message} );
   });
 
   router.post('/login', passport.authenticate('login', {
