@@ -25,11 +25,18 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li>
+
         <% if (typeof current_user !== 'undefined') { %>
+        <li>
           <a href="/dashboard">
             <i class="fa fa-user" aria-hidden="true"></i>
             <span> Dashboard </span>
+          </a>
+        </li>
+        <li>
+          <a href="/dashboard/payment">
+            <i class="fa fa-credit-card" aria-hidden="true"></i>
+            <span> Payment Information </span>
           </a>
         </li>
           <li>

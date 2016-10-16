@@ -8,7 +8,7 @@ router.post('/', function(req, res) {
 
   res.locals.current_user.delete_card()
   .then(function(){
-    res.redirect("/dashboard");
+    res.redirect("/dashboard/payment");
   })
   .catch(function(err){
     console.log(err)

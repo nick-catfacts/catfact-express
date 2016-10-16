@@ -1,30 +1,25 @@
 <div class ="container-fluid">
 
 
-  <div class="row">
-    <div class="col-md-8">
-        <%# Messages remaining pane %>
-        <div class = "row">
-          <div class="col-md-12">
-            <h4 style="margin-top:0px; text-decoration: underline;">
-              You have <%= messages_remaining %> cat facts remaining. %>
-            </h4>
-          </div>
-        </div>
+<hr>
 
-        <%# Increase Messages Pane %>
-        <div class="row">
-          <div class="col-md-12">
-            <% include ./_increase_msg_buttons %>
-          </div>
-        </div>
-    </div>
-
-    <%# Payment info Pane %>
-    <div class="col-md-3">
-        <% include ./_output_payment_info %>
+  <%# Messages remaining pane %>
+  <div class = "row">
+    <div class="col-md-12">
+      <h4 style="margin-top:0px; text-decoration: underline;">
+        You have <%= messages_remaining %> cat facts remaining. %>
+      </h4>
     </div>
   </div>
+
+  <%# Increase Messages Pane %>
+  <div class="row">
+        <div class="col-md-12">
+          <% include ./_increase_msg_buttons %>
+        </div>
+  </div>
+
+<hr>
 
   <%# Recipients Pane %>
   <div class ="row">
@@ -34,17 +29,19 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-offset-3 col-md-6">
-      <% if (typeof flash_message !== 'undefined') { %>
-          <div class="alert alert-danger"
-          role="alert"
-          style="font-size: 16px; text-align: center">
-              <%=flash_message%>
-          </div>
-      <% } %>
+<hr>
+
+    <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+        <% if (typeof flash_message !== 'undefined') { %>
+            <div class="alert alert-danger"
+            role="alert"
+            style="font-size: 16px; text-align: center">
+                <%=flash_message%>
+            </div>
+        <% } %>
+      </div>
     </div>
-  </div>
 
 
 

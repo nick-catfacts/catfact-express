@@ -1,0 +1,23 @@
+<div class ="container-fluid">
+
+
+
+<h4 style="text-decoration:underline; margin-bottom: 2px">
+  Payment Information
+</h4>
+
+<% include ./_output_payment_info %>
+
+<% if(current_user.credit_card[0]) { %>
+  <form action="/dashboard/payment/delete" method="post">
+    <button type="submit" class="btn-link" style="padding:0px">Delete Credit Card</button>
+  </form>
+<% } else { %>
+  <a href="/dashboard/payment/update">Add Credit Card</a>
+<% } %>
+
+
+
+<div style="font-size: 12px">( Disclaimer: This site uses <a href ="https://stripe.com/docs/security/stripe">Stripe</a> for all transactions, and all payment information is processed and stored entirely on Stripe's servers.)</div>
+
+</div>
