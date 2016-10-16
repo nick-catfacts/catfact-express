@@ -7,7 +7,7 @@ var app_root = require('app-root-path')
  // Routes
 router.get('/', function(req, res) {
 
-  console.log("RESPOSE:" + res)
+  //console.log("RESPONSE:" + res)
 
   var username =  res.locals.current_user.username;
   var recipients = res.locals.current_user.recipients.toObject();

@@ -2,7 +2,8 @@
   <tr style = "border-bottom:0px solid ">
 
     <% for (var i = 0; i < recipient_headers.length; i++) { %>
-        <% if(recipient_headers[i] !== '_id'){ %>
+        <%# factor this  if out at some point in the futcha %>
+        <% if(recipient_headers[i] !== 'id' && recipient_headers[i] !== '_id' ){ %>
           <th><%= recipient_headers[i] %></th>
         <% } %>
     <% } %>
@@ -12,12 +13,12 @@
     <% for (var i = 0; i < recipients.length; i++) { %>
       <tr>
            <% Object.keys(recipients[i]).forEach(function(key) { %>
-            <% if(key !== "_id"){ %>
-              <td> <%= recipients[i][key] %></td>
-            <% } %>
+                  <% if(key !== "id" && key !== "_id"){ %>
+                    <td> <%= recipients[i][key] %></td>
+                  <% } %>
           <% }); %>
           <td>
-            <a href="/dashboard/recipients/update/<%= recipients[i]._id %>"> Edit </a> |
+            <a href="/dashboard/recipients/update/<%= recipients[i].id %>"> Edit </a> |
             <form style="display:inline"
                 class="form-inline"
                 action="/dashboard/recipients/delete"

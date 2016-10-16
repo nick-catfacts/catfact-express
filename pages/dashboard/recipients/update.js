@@ -27,7 +27,7 @@ router.post('/', function(req, res) {
     interval: req.body.interval
   }
 
-  res.locals.current_user.update_recipient(req.body._id, updated_user)
+  res.locals.current_user.update_recipient(req.body.id, updated_user)
   .then(function(){
     res.redirect("/dashboard");
   }).catch(function(err){

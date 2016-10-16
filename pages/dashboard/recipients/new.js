@@ -9,7 +9,6 @@ router.get('/', function(req, res) {
 
 
 router.post('/', function(req, res) {
-
   var new_recipient = {
     first_name: req.body.first_name,
     last_name: req.body.last_name,

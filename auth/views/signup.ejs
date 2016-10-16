@@ -15,10 +15,16 @@
             <input type="password" class="form-control" name="password">
         </div>
 
-        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
-        <% if (message) { %>
-            <span class="alert alert-danger" role="alert" style="font-size: 16px; float:right"><%=message%></span>
-        <% } %>
+        <div class="form-group">
+            <button type="submit" class="btn btn-warning btn-lg">Signup</button>
+            <% if (message) { %>
+                <span class="alert alert-danger" role="alert" style="font-size: 16px; float:right"><%=message%></span>
+            <% } %>
+        </div>
+
+        <div class="form-group">
+            <div class="g-recaptcha" data-sitekey="6LfuZwkUAAAAAOgcKAq4sbEKNWSGRsH10-p2C0AK"></div>
+        </div>
     </form>
 
     <hr>

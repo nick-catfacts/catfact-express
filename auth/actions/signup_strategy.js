@@ -1,6 +1,7 @@
 var LocalStrategy   = require('passport-local').Strategy;
 var User = require('catfact-ecommerce').model;
 var bCrypt = require('bcrypt-nodejs');
+var request = require('request-promise');
 
 var init =  function(passport){
 
@@ -40,7 +41,33 @@ var init =  function(passport){
             };
             // Delay the execution of findOrCreateUser and execute the method
             // in the next tick of the event loop
-            process.nextTick(findOrCreateUser);
+            console.log(req)
+
+            var options = {
+              method: 'POST',
+              uri: "https://www.google.com/recaptcha/api/siteverify",
+              form: {
+                secret: process.env.GOOGLE_CAPTCHA_SECRET,
+                response: req.body["g-recaptcha-response"]
+              }
+            }
+
+            request(options)
+            .then(function(captcha_res){
+                console.log(captcha_res)
+                captcha_res = JSON.parse(captcha_res)
+                if(captcha_res.success){
+                    process.nextTick(findOrCreateUser);
+                }else{
+                    console.log('Captcha failed: '+username);
+                    return done(null, false, req.flash('message','Captcha Failed. You ARE a robot!!!'));
+                }
+             })
+            .catch(function(err){
+                console.log(err)
+            })
+
+
         })
     );
 
