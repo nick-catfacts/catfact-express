@@ -31,12 +31,10 @@ var app = express();
 
 
 app.use(function(req, res, next){
-  console.log(req.headers.host)
-  if (req.headers['x-forwarded-proto'] == 'https' || req.headers.host.match(/localhost/).length == 1) {
+  if (req.headers['x-forwarded-proto'] == 'https' || req.headers.host.match(/localhost/)) {
       return next();
   } else {
       res.redirect('https://' + req.headers.host + req.path);
-
   }
 });
 
