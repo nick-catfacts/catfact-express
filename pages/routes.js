@@ -8,6 +8,10 @@ var script_root = app_root +"/pages"
 var views_root = app_root + "/views"
 var isAuthenticated = require(app_root + '/auth/app').isAuthenticated
 
+router.get('/about', function(req, res){
+  res.render(views_root + '/public/about', {about_page_active: "active"})
+})
+
 
 router.use('/dashboard', isAuthenticated, require(script_root + '/dashboard/index'));
 

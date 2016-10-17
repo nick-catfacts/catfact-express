@@ -22,11 +22,16 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-
+        <li class="<%= about_page_active %>">
+          <a href="/about">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span> Aboot </span>
+          </a>
+        </li>
         <% if (typeof current_user !== 'undefined') { %>
         <li class="<%= dashboard_page_active %>">
           <a href="/dashboard">
-            <i class="fa fa-user" aria-hidden="true"></i>
+            <i class="fa fa-cog" aria-hidden="true"></i>
             <span> Dashboard </span>
           </a>
         </li>

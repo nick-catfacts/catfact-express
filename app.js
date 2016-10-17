@@ -61,20 +61,13 @@ app.use(flash());
 app.locals.config = require('./config/config');;
 
 
-// configure passport which relies up several above (session, bodyparser, flash,etc)
-// migrate this pile of mush into it's own nice contained module at some point
-app.use(passport.initialize());
-app.use(passport.session());
-var passport_app = require(app_root + '/auth/app');
-passport_app.init(passport)
-var auth_routes = require(app_root + '/auth/routes');
-app.use('/auth', auth_routes.init(passport));
 
 // Single request/response variables
 app.use(function(req, res, next){
 
-  res.locals.dashboard_page_active = "";
-  res.locals.payment_page_active = "";
+  res.locals.dashboard_page_active = "test";
+  res.locals.payment_page_active = "test";
+  res.locals.about_page_active = "tadsfadfadf";
 
   // flash errors/messages present
   var flash = req.flash('flash_message')
@@ -91,6 +84,17 @@ app.use(function(req, res, next){
   } else{
     next()
   }
+
+
+
+// configure passport which relies up several above (session, bodyparser, flash,etc)
+// migrate this pile of mush into it's own nice contained module at some point
+app.use(passport.initialize());
+app.use(passport.session());
+var passport_app = require(app_root + '/auth/app');
+passport_app.init(passport)
+var auth_routes = require(app_root + '/auth/routes');
+app.use('/auth', auth_routes.init(passport));
 
 // make sure app works before deleting this
       // if(req.user){
@@ -113,7 +117,7 @@ app.use('/', require(app_root + '/pages/routes'));
 // Test Route
 app.get('/', function(req, res) {
   console.log('This is a test page!');
-  res.render('public/test', {my_root: app_root});
+  res.render('public/test');
 });
 
 
