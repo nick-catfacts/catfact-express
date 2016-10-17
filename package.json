@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./app.js"
+    "start": "node ./app.js",
+    "update": "npm update catfact-daemon && npm update catfact-ecommerce"
   },
   "dependencies": {
     "app-root-path": "^2.0.1",
