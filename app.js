@@ -12,7 +12,6 @@ var app_root = require('app-root-path');
 var passport = require('passport');
 
 
-
 var db_name = 'catfacts'
 if(process.env.OPENSHIFT_MONGODB_DB_URL){
   module.mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
@@ -29,6 +28,18 @@ var User = require('catfact-ecommerce').model
 
 // declare app
 var app = express();
+
+
+app.use(function(req, res, next){
+  console.log(req.headers.host)
+  if (req.headers['x-forwarded-proto'] == 'https' || req.headers.host.match(/localhost/).length == 1) {
+      return next();
+  } else {
+      res.redirect('https://' + req.headers.host + req.path);
+
+  }
+});
+
 
 // Static assets
 app.use('/vendor/jquery',    express.static('node_modules/jquery/dist')); // redirect JS jQuery
