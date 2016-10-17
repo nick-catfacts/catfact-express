@@ -16,17 +16,27 @@
 
   <%# Recipients Pane %>
   <div class ="row">
+
+  <div class="col-md-12" style="text-align: center">
+          <h3>
+          <div style="font-weight: bold; text-decoration: underline;"> Hello <%= current_user.username %>!</div>
+        </h3>
+  </div>
     <div class="col-md-12" style="text-align: center">
         <h3>
           <span style="border-bottom: 0px solid">
-            Your cat facts recipients
+            <div>Your cat facts recipients</div>
           </span>
         </h3>
     </div>
   </div>
+
+
   <div class="col-md-8 col-md-offset-2">
   <hr>
   </div>
+
+
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <% include ./_output_recipients %>
