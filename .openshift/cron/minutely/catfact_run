@@ -1,2 +1,2 @@
-cd "../../../node_modules/catfact-daemon"
+cd "${OPENSHIFT_REPO_DIR}/node_modules/catfact-daemon"
 npm start
