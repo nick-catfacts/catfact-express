@@ -84,7 +84,7 @@ app.use(function(req, res, next){
   } else{
     next()
   }
-
+})
 
 
 // configure passport which relies up several above (session, bodyparser, flash,etc)
@@ -107,7 +107,7 @@ app.use('/auth', auth_routes.init(passport));
       // else{
       //   next()
       // }
-})
+
 
 
 
