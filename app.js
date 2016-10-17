@@ -61,15 +61,11 @@ app.use(flash());
 app.locals.config = require('./config/config');;
 
 
-
-// Single request/response variables
-app.use(function(req, res, next){
-
+app.use(function(req,res, next){
   res.locals.dashboard_page_active = "test";
   res.locals.payment_page_active = "test";
   res.locals.about_page_active = "tadsfadfadf";
-
-  // flash errors/messages present
+    // flash errors/messages present
   var flash = req.flash('flash_message')
   console.log("flash msg" + flash)
 
@@ -77,14 +73,9 @@ app.use(function(req, res, next){
     console.log("We have a flash message!!")
     res.locals.flash_message = flash.toString()
   }
-
-  if(req.user){
-    res.locals.current_user = req.user;
-    next()
-  } else{
-    next()
-  }
+  next()
 })
+
 
 
 // configure passport which relies up several above (session, bodyparser, flash,etc)
@@ -107,6 +98,17 @@ app.use('/auth', auth_routes.init(passport));
       // else{
       //   next()
       // }
+
+// Single request/response variables
+app.use(function(req, res, next){
+
+  if(req.user){
+    res.locals.current_user = req.user;
+    next()
+  } else{
+    next()
+  }
+})
 
 
 
