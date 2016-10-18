@@ -5,7 +5,7 @@
       <% for (var i = 0; i < recipient_headers.length; i++) { %>
           <%# factor this  if out at some point in the futcha %>
           <% if(recipient_headers[i] !== 'id' && recipient_headers[i] !== '_id'){ %>
-            <th><%= recipient_headers[i] %></th>
+            <th><%= deCamelCaser(recipient_headers[i]) %></th>
           <% } %>
       <% } %>
       <th></th><th></th>
