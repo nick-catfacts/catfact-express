@@ -1,39 +1,46 @@
-<table class="table table-condensed">
-  <tr style = "border-bottom:0px solid ">
+  <table class="table-responsive table">
+    <tr style = "border-bottom:0px solid ">
 
-    <% for (var i = 0; i < recipient_headers.length; i++) { %>
-        <%# factor this  if out at some point in the futcha %>
-        <% if(recipient_headers[i] !== 'id' && recipient_headers[i] !== '_id' ){ %>
-          <th><%= recipient_headers[i] %></th>
-        <% } %>
-    <% } %>
-    <th></th>
-  </tr>
+      <% for (var i = 0; i < recipient_headers.length; i++) { %>
+          <%# factor this  if out at some point in the futcha %>
+          <% if(recipient_headers[i] !== 'id' && recipient_headers[i] !== '_id' && recipient_headers[i] !== 'phone'){ %>
+            <th><%= recipient_headers[i] %></th>
+          <% } %>
+      <% } %>
+      <th></th><th></th>
+    </tr>
 
-    <% for (var i = 0; i < recipients.length; i++) { %>
-      <tr>
-           <% Object.keys(recipients[i]).forEach(function(key) { %>
-                  <% if(key !== "id" && key !== "_id"){ %>
-                    <td> <%= recipients[i][key] %></td>
-                  <% } %>
-          <% }); %>
-          <td>
-            <a href="/dashboard/recipients/update/<%= recipients[i].id %>"> Edit </a> |
-            <form style="display:inline"
-                class="form-inline"
-                action="/dashboard/recipients/delete"
-                method="post">
-                <input type="hidden" name="id" value="<%= recipients[i].phone %>"/>
-                <button
-                  class="btn-link"
-                  style="text-decoration: underline;"
-                  type="submit">
-                      Delete
-                </button>
-            </form>
-          </td>
-      </tr>
-    <% } %>
-    <tr><td><a href = "/dashboard/recipients/new"> Add New Recipient </a></td></tr>
-</table>
+      <% for (var i = 0; i < recipients.length; i++) { %>
+        <tr>
+             <% Object.keys(recipients[i]).forEach(function(key) { %>
+                    <% if(key !== "id" && key !== "_id" && key !== 'phone'){ %>
+                      <td> <%= recipients[i][key] %></td>
+                    <% } %>
+            <% }); %>
+            <td>
+              <a href="/dashboard/recipients/update/<%= recipients[i].id %>"> Edit </a>
+            </td>
+            <td>
+              <form style="display:inline;"
+                  class="form-inline"
+                  action="/dashboard/recipients/delete"
+                  method="post">
+                  <input type="hidden" name="id" value="<%= recipients[i].phone %>"/>
+                  <button
+                    class="btn-link"
+                    style="display:inline;
+                          border:none;
+                          text-decoration: underline;
+                          padding:0!important;
+                          margin:0!important;
+                          outline:0;
+                          outline-offset: 0!important;"
+                    type="submit">
+                        Delete
+                  </button>
+              </form>
+            </td>
+        </tr>
+      <% } %>
+  </table>
 

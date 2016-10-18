@@ -14,7 +14,11 @@
         <span class="icon-bar"></span>
       </button>
        <div style="overflow:hidden; white-space: nowrap;">
-            <a class="navbar-brand" href="/">
+            <% if (typeof current_user == 'undefined') { %>
+              <a class="navbar-brand" href="/">
+            <% } else {%>
+              <a class="navbar-brand" href="/dashboard">
+            <%} %>
                CatFacts.us
             </a>
         </div>
