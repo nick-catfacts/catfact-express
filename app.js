@@ -73,7 +73,8 @@ app.locals.config = require('./config/config');;
 app.use(function(req,res, next){
   res.locals.dashboard_page_active = "test";
   res.locals.payment_page_active = "test";
-  res.locals.about_page_active = "tadsfadfadf";
+  res.locals.about_page_active = "test";
+  res.locals.instruction_page_active = "test";
     // flash errors/messages present
   var flash = req.flash('flash_message')
   console.log("flash msg" + flash)

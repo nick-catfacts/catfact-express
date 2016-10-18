@@ -15,6 +15,12 @@ router.get('/about', function(req, res){
 
 router.use('/dashboard', isAuthenticated, require(script_root + '/dashboard/index'));
 
+router.get('/dashboard/instructions', isAuthenticated, function(req,res){
+  res.render(views_root + '/dashboard/instructions', {instruction_page_active: "active"})
+});
+
+
+
 // add messages
 router.use('/dashboard/account/add', isAuthenticated, require(script_root + '/dashboard/account/add'));
 
