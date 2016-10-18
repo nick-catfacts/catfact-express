@@ -1,7 +1,12 @@
 <div class ="container-fluid">
 
+<div class="row">
+  <div class="col-md-12" style="text-align: center;">
+    <div style="font-size: 12px">( Disclaimer: This site uses <a href ="https://stripe.com/docs/security/stripe">Stripe</a> for all transactions, and all payment information is stored securely on Stripe's servers.)</div>
+  </div>
 
-<div style="font-size: 12px">( Disclaimer: This site uses <a href ="https://stripe.com/docs/security/stripe">Stripe</a> for all transactions, and all payment information is stored securely on Stripe's servers.)</div>
+  <hr>
+</div>
 
 
 
@@ -10,24 +15,19 @@
 
 
 <div class="row">
-  <div class="col-md-8  col-sm-12">
+  <div class="col-md-12" style="text-align: center">
+
       <% if(current_user.credit_card[0]) { %>
         <form action="/dashboard/payment/delete" method="post">
           <button type="submit" class="btn-link" style="padding:0px">Delete Credit Card</button>
         </form>
       <% } else { %>
-      <div class="row" style="margin:20px 0 20px 0">
-        <div class="col-md-12">
-          <span class="alert alert-info" role="alert">
-          You currently have no payment information. Please add a payment source!
-          </span>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-        <a href="/dashboard/payment/update">Add Credit Card</a>
-        </div>
-      </div>
+
+        <a class="btn btn-warning" role="button" href="/dashboard/payment/update">
+          You currently have no payment information. Please click here to add a payment source!
+        </a>
+
+
       <% } %>
   </div>
 </div>

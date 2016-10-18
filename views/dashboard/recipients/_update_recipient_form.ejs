@@ -1,34 +1,142 @@
-<form action="/dashboard/recipients/update" method="POST" id="update-recipient-form">
-  <span class="errors"></span>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3  col-sm-6 col-sm-offset-3 ">
+  <h3 style="text-decoration: underline;"> Edit Cat Fact Recipient</h3>
+      <form
+        action="/dashboard/recipients/update"
+        method="POST"
+        id="recipient-update-form"
+        role="form"
+        data-toggle="validator">
 
-  <div class="form-row">
-    <label>
-      <span>First Name</span>
-      <input type="text" name="first_name" value="<%= recipient.first_name %>" size="20">
-    </label>
+
+    <div class="row">
+      <div class="col-sm-12 ">
+        <span class="errors"></span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6 ">
+        <div class="form-group has-feedback">
+          <label>
+            <span>First Name</span>
+           </label>
+            <input
+              type="text"
+              name="first_name"
+              class="form-control"
+              placeholder="John"
+              value="<%= recipient.first_name %>"
+              required autofocus>
+              <div class="help-block with-errors"></div>
+       </div>
+      </div>
+
+      <div class="col-sm-6 ">
+        <div class="form-group has-feedback">
+            <label>
+              <span>Last Name</span>
+            </label>
+            <input
+              type="text"
+              name="last_name"
+              placeholder="Doe"
+              class="form-control"
+              value="<%= recipient.last_name %>"
+              required>
+              <div class="help-block with-errors"></div>
+        </div>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col-sm-4 ">
+      <div class="form-group has-feedback">
+        <label>
+          <span>Area Code</span>
+        </label>
+        <input
+          type="tel"
+          pattern="[0-9]*"
+          minlength="3"
+          maxlength="3"
+          class="form-control"
+          placeholder="504"
+          name="area_code"
+          value="<%= recipient.phone.toString().substring(0,3) %>"
+          required>
+          <div class="help-block with-errors"></div>
+      </div>
+    </div>
+
+    <div class="col-sm-4 ">
+      <div class="form-group has-feedback">
+        <label>
+          <span>Phone Prefix</span>
+        </label>
+        <input
+          type="tel"
+          pattern="[0-9]*"
+          minlength="3"
+          maxlength="3"
+          class="form-control"
+          placeholder="321"
+          name="phone_prefix"
+          value="<%= recipient.phone.toString().substring(3,6) %>"
+          required>
+          <div class="help-block with-errors"></div>
+
+      </div>
+    </div>
+
+    <div class="col-sm-4 ">
+      <div class="form-group has-feedback">
+        <label>
+          <span>Phone Suffix</span>
+        </label>
+        <input
+          type="tel"
+          pattern="[0-9]*"
+          maxlength="4"
+          minlength="4"
+          class="form-control"
+          placeholder="1234"
+          name="phone_suffix"
+          value="<%= recipient.phone.toString().substring(6,10) %>"
+          required>
+          <div class="help-block with-errors"></div>
+      </div>
+    </div>
+
   </div>
 
-  <div class="form-row">
-    <label>
-      <span>Last Name</span>
-      <input type="text" name="last_name" value="<%= recipient.last_name %>" size="20" >
-    </label>
+  <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group has-feedback">
+          <label>
+            <span>Interval - how often messages will be sent. (0 is turned off, Max interval is 59)</span>
+           </label>
+            <div class="row">
+              <div class="col-md-4">
+                <input
+                  type="text"
+                  name="interval"
+                  class="form-control"
+                  placeholder="0-59"
+                  pattern="[0-9]*"
+                  maxlength="2"
+                  minlength="1"
+                  value="<%= recipient.interval %>"
+                  required>
+              </div>
+            </div>
+            <div class="help-block with-errors"></div>
+       </div>
+      </div>
   </div>
 
-  <div class="form-row">
-    <label>
-      <span>Phone Number</span>
-      <input type="text" name="phone" value="<%= recipient.phone %>" size="20" >
-    </label>
+    <input type="hidden" name="id" value="<%=recipient.id %>">
+    <button type="submit" class="submit btn btn-primary">Update Recipient</button>
+    </form>
   </div>
-
-  <div class="form-row">
-    <label>
-      <span>Interval</span>
-      <input type="text" name="interval" value="<%= recipient.interval %>" size="4" >
-    </label>
-  </div>
-
-  <input type="hidden" name="id" value="<%=recipient.id%>">
-  <input type="submit" class="submit">
-</form>
+</div>
