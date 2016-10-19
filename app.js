@@ -87,7 +87,6 @@ app.use(function(req,res, next){
 })
 
 
-
 // configure passport which relies up several above (session, bodyparser, flash,etc)
 // migrate this pile of mush into it's own nice contained module at some point
 app.use(passport.initialize());

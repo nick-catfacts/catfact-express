@@ -4,6 +4,18 @@ var app_root = require('app-root-path');
 var lodash = require('lodash-node');
 
 
+
+router.use( function(req, res, next){
+  res.locals.deCamelCaser = function(string){
+    var result = string.replace( /([A-Z])/g, " $1" );
+    result = result.replace('_', " ");
+    return result.charAt(0).toUpperCase() + result.slice(1);
+  }
+  next();
+});
+
+
+
 router.get('/', function(req, res) {
 
 if(res.locals.current_user.credit_card[0]){

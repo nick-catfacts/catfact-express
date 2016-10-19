@@ -4,7 +4,7 @@
     <% for (var key in payment_info) {  %>
       <% if (payment_info.hasOwnProperty(key)) { %>
       <tr>
-        <td> <%= key %> </td>
+        <td> <%= deCamelCaser(key) %> </td>
         <td> <%= payment_info[key] %> </td>
       </tr>
       <% } %>
