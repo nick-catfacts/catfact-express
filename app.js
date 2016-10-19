@@ -29,7 +29,6 @@ var User = require('catfact-ecommerce').model;
 // declare app
 var app = express();
 
-// remove the second or STATEMENT!!!
 app.use(function(req, res, next) {
   if (req.headers['x-forwarded-proto'] == 'https' || req.headers.host.match(/localhost/)) {
       return next();
