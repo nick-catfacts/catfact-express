@@ -1,5 +1,13 @@
 <form action="/dashboard/payment/update" method="POST" id="payment-form">
-        <div class="col-xs-12 col-md-4 col-md-offset-4">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+
+          <% if (typeof flash_message !== 'undefined') { %>
+            <div class="alert alert-danger"
+            role="alert"
+            style="font-size: 16px; text-align: center">
+                <%=flash_message%>
+            </div>
+        <% } %>
 
     <span class="payment-errors"></span>
 

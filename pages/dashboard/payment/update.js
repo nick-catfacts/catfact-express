@@ -24,6 +24,8 @@ router.post('/', function(req, res) {
     res.redirect('/dashboard/payment');
   }).catch(function(err) {
     console.log(err);
+    req.flash('flash_message', err.message);
+    res.redirect('/dashboard/payment/update');
   });
 
 });
