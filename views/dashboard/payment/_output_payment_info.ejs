@@ -1,11 +1,13 @@
 
-<table class="table-condensed table" style="margin:0px">
-  <% for (var key in payment_info) {  %>
-    <% if (payment_info.hasOwnProperty(key)) { %>
-    <tr>
-      <td> <%= key %> </td>
-      <td> <%= payment_info[key] %> </td>
-    </tr>
+<div class="table-responsive">
+  <table class="table" style="margin:0px">
+    <% for (var key in payment_info) {  %>
+      <% if (payment_info.hasOwnProperty(key)) { %>
+      <tr>
+        <td> <%= key %> </td>
+        <td> <%= payment_info[key] %> </td>
+      </tr>
+      <% } %>
     <% } %>
-  <% } %>
-</table>
+  </table>
+</div>
