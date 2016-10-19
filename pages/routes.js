@@ -3,20 +3,20 @@
 
 var express = require('express');
 var router = express.Router();
-var app_root = require('app-root-path')
-var script_root = app_root +"/pages"
-var views_root = app_root + "/views"
-var isAuthenticated = require(app_root + '/auth/app').isAuthenticated
+var app_root = require('app-root-path');
+var script_root = app_root + '/pages';
+var views_root = app_root + '/views';
+var isAuthenticated = require(app_root + '/auth/app').isAuthenticated;
 
-router.get('/about', function(req, res){
-  res.render(views_root + '/public/about', {about_page_active: "active"})
-})
+router.get('/about', function(req, res) {
+  res.render(views_root + '/public/about', {about_page_active: 'active'});
+});
 
 
 router.use('/dashboard', isAuthenticated, require(script_root + '/dashboard/index'));
 
-router.get('/dashboard/instructions', isAuthenticated, function(req,res){
-  res.render(views_root + '/dashboard/instructions', {instruction_page_active: "active"})
+router.get('/dashboard/instructions', isAuthenticated, function(req, res) {
+  res.render(views_root + '/dashboard/instructions', {instruction_page_active: 'active'});
 });
 
 
@@ -27,13 +27,13 @@ router.use('/dashboard/account/add', isAuthenticated, require(script_root + '/da
 // edit payment
 router.use('/dashboard/payment', isAuthenticated, require(script_root + '/dashboard/payment/index'));
 router.use('/dashboard/payment/update', isAuthenticated, require(script_root + '/dashboard/payment/update'));
-router.use('/dashboard/payment/delete', isAuthenticated, require(script_root+ '/dashboard/payment/delete'));
+router.use('/dashboard/payment/delete', isAuthenticated, require(script_root + '/dashboard/payment/delete'));
 
 // recipients
-router.use('/dashboard/recipients/new', isAuthenticated, require(script_root +'/dashboard/recipients/new'));
+router.use('/dashboard/recipients/new', isAuthenticated, require(script_root + '/dashboard/recipients/new'));
 router.use('/dashboard/recipients/delete', isAuthenticated, require(script_root + '/dashboard/recipients/delete'));
 router.use('/dashboard/recipients/update', isAuthenticated, require(script_root + '/dashboard/recipients/update'));
 //router.use('/dashboard/recipients/update', require(script_root + '/dashboard/recipients/update'));
 
 // Exports
-module.exports = router
+module.exports = router;

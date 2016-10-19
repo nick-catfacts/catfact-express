@@ -1,34 +1,34 @@
 var express = require('express');
 var router = express.Router();
-var app_root = require('app-root-path')
+var app_root = require('app-root-path');
 
 
 
-var init = function(passport){
+var init = function(passport) {
 
 // auth routes
   router.get('/login', function(req, res) {
-    var flash = req.flash()
-    message = flash.error || flash.message
-    res.render(app_root + '/auth/views/login', {message: message} );
+    var flash = req.flash();
+    message = flash.error || flash.message;
+    res.render(app_root + '/auth/views/login', {message: message});
   });
 
-  router.get('/signup', function(req, res){
-    var flash = req.flash()
-    message = flash.error || flash.message
-    res.render(app_root + '/auth/views/signup', {message: message} );
+  router.get('/signup', function(req, res) {
+    var flash = req.flash();
+    message = flash.error || flash.message;
+    res.render(app_root + '/auth/views/signup', {message: message});
   });
 
   router.post('/login', passport.authenticate('login', {
      successRedirect: '/dashboard',
      failureRedirect: '/auth/login',
-     failureFlash : true
+     failureFlash: true
    }));
 
   router.post('/signup', passport.authenticate('signup', {
     successRedirect: '/dashboard',
     failureRedirect: '/auth/signup',
-    failureFlash : true
+    failureFlash: true
   }));
 
   // // /* GET Home Page */
@@ -42,9 +42,9 @@ var init = function(passport){
   });
 
   return router;
-}
+};
 
 
 module.exports = {
-    init:init
-  }
+    init: init
+  };

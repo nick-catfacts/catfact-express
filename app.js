@@ -6,31 +6,31 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var express_layouts = require('express-ejs-layouts');
 var http = require('http');
-var flash    = require('connect-flash');
+var flash = require('connect-flash');
 var session = require('express-session');
 var app_root = require('app-root-path');
 var passport = require('passport');
 
 
-var db_name = 'catfacts'
-if(process.env.OPENSHIFT_MONGODB_DB_URL){
+var db_name = 'catfacts';
+if (process.env.OPENSHIFT_MONGODB_DB_URL) {
   module.mongodb_connection_string = process.env.OPENSHIFT_MONGODB_DB_URL + db_name;
-  console.log("CONNECT STRING: " + module.mongodb_connection_string)
+  console.log('CONNECT STRING: ' + module.mongodb_connection_string);
 }
-else{
-  module.mongodb_connection_string= 'mongodb://localhost/' + db_name;
+else {
+  module.mongodb_connection_string = 'mongodb://localhost/' + db_name;
 }
 module.STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
 
 
 // my user model
-var User = require('catfact-ecommerce').model
+var User = require('catfact-ecommerce').model;
 
 // declare app
 var app = express();
 
 // remove the second or STATEMENT!!!
-app.use(function(req, res, next){
+app.use(function(req, res, next) {
   if (req.headers['x-forwarded-proto'] == 'https' || req.headers.host.match(/localhost/)) {
       return next();
   } else {
@@ -40,10 +40,10 @@ app.use(function(req, res, next){
 
 
 // Static assets
-app.use('/vendor/jquery',    express.static('node_modules/jquery/dist')); // redirect JS jQuery
-app.use('/vendor/bootstrap',    express.static('node_modules/bootstrap/dist')); // redirect bootstrap JS
-app.use('/vendor/font-awesome',   express.static('node_modules/font-awesome')); // redirect CSS bootstrap
-app.use('/vendor/bootstrap-validator',   express.static('node_modules/bootstrap-validator/dist')); // redirect CSS bootstrap
+app.use('/vendor/jquery', express.static('node_modules/jquery/dist')); // redirect JS jQuery
+app.use('/vendor/bootstrap', express.static('node_modules/bootstrap/dist')); // redirect bootstrap JS
+app.use('/vendor/font-awesome', express.static('node_modules/font-awesome')); // redirect CSS bootstrap
+app.use('/vendor/bootstrap-validator', express.static('node_modules/bootstrap-validator/dist')); // redirect CSS bootstrap
 app.use(express.static('assets'));
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));  // uncomment after placing your favicon in /public
 
@@ -67,24 +67,24 @@ app.use(flash());
 
 // Site Variables
 // Static Global
-app.locals.config = require('./config/config');;
+app.locals.config = require('./config/config');
 
 
-app.use(function(req,res, next){
-  res.locals.dashboard_page_active = "test";
-  res.locals.payment_page_active = "test";
-  res.locals.about_page_active = "test";
-  res.locals.instruction_page_active = "test";
+app.use(function(req, res, next) {
+  res.locals.dashboard_page_active = 'test';
+  res.locals.payment_page_active = 'test';
+  res.locals.about_page_active = 'test';
+  res.locals.instruction_page_active = 'test';
     // flash errors/messages present
-  var flash = req.flash('flash_message')
-  console.log("flash msg" + flash)
+  var flash = req.flash('flash_message');
+  console.log('flash msg' + flash);
 
-  if(flash.length > 0){
-    console.log("We have a flash message!!")
-    res.locals.flash_message = flash.toString()
+  if (flash.length > 0) {
+    console.log('We have a flash message!!');
+    res.locals.flash_message = flash.toString();
   }
-  next()
-})
+  next();
+});
 
 
 // configure passport which relies up several above (session, bodyparser, flash,etc)
@@ -92,7 +92,7 @@ app.use(function(req,res, next){
 app.use(passport.initialize());
 app.use(passport.session());
 var passport_app = require(app_root + '/auth/app');
-passport_app.init(passport)
+passport_app.init(passport);
 var auth_routes = require(app_root + '/auth/routes');
 app.use('/auth', auth_routes.init(passport));
 
@@ -109,15 +109,15 @@ app.use('/auth', auth_routes.init(passport));
       // }
 
 // Single request/response variables
-app.use(function(req, res, next){
+app.use(function(req, res, next) {
 
-  if(req.user){
+  if (req.user) {
     res.locals.current_user = req.user;
-    next()
-  } else{
-    next()
+    next();
+  } else {
+    next();
   }
-})
+});
 
 
 
@@ -132,60 +132,12 @@ app.get('/', function(req, res) {
 });
 
 
+// Server GO
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 
 
-// // Route Logic
-// var routes = require('./routes/index');
-// app.use('/', routes);
-
-
-
-
-// // catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
-
-
-
-
-
-// // error handlers
-
-// // development error handler
-// // will print stacktrace
-// if (app.get('env') === 'development') {
-//   app.use(function(err, req, res, next) {
-//     res.status(err.status || 500);
-//     res.render('error', {
-//       message: err.message,
-//       error: err
-//     });
-//   });
-// }
-
-// // production error handler
-// // no stacktraces leaked to user
-// app.use(function(err, req, res, next) {
-//   res.status(err.status || 500);
-//   res.render('error', {
-//     message: err.message,
-//     error: {}
-//   });
-// });
-
-
-// module.exports = app;
-
-
-
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 3000
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
-
-
-http.createServer(app).listen(server_port, server_ip_address, function () {
-  console.log( "Listening on " + server_ip_address + ", port " + server_port )
+http.createServer(app).listen(server_port, server_ip_address, function() {
+  console.log('Listening on ' + server_ip_address + ', port ' + server_port);
 });
 

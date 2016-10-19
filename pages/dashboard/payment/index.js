@@ -5,12 +5,12 @@ var lodash = require('lodash-node');
 
 
 
-router.use( function(req, res, next){
-  res.locals.deCamelCaser = function(string){
-    var result = string.replace( /([A-Z])/g, " $1" );
-    result = result.replace('_', " ");
+router.use(function(req, res, next) {
+  res.locals.deCamelCaser = function(string) {
+    var result = string.replace(/([A-Z])/g, ' $1');
+    result = result.replace('_', ' ');
     return result.charAt(0).toUpperCase() + result.slice(1);
-  }
+  };
   next();
 });
 
@@ -18,9 +18,9 @@ router.use( function(req, res, next){
 
 router.get('/', function(req, res) {
 
-if(res.locals.current_user.credit_card[0]){
-  var credit_card = res.locals.current_user.credit_card[0].toObject()
-} else{
+if (res.locals.current_user.credit_card[0]) {
+  var credit_card = res.locals.current_user.credit_card[0].toObject();
+} else {
   var credit_card = {};
 }
 
@@ -28,7 +28,7 @@ if(res.locals.current_user.credit_card[0]){
 
   res.render(app_root + '/views/dashboard/payment/index', {
     payment_info: payment_info,
-    payment_page_active: "active"
+    payment_page_active: 'active'
   });
 });
 
