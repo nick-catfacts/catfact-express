@@ -95,18 +95,6 @@ passport_app.init(passport);
 var auth_routes = require(app_root + '/auth/routes');
 app.use('/auth', auth_routes.init(passport));
 
-// make sure app works before deleting this
-      // if(req.user){
-      //   res.locals.is_login = true;
-      //   User.findOne({username: req.user.username}).then(function(user){
-      //     res.locals.current_user = user
-      //     next();
-      //   })
-      // }
-      // else{
-      //   next()
-      // }
-
 // Single request/response variables
 app.use(function(req, res, next) {
 
