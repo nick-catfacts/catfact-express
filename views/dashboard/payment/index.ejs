@@ -12,12 +12,15 @@
 
 <hr>
 
-<% include ./_output_payment_info %>
 
 
 
 <div class="row">
   <div class="col-md-12" style="text-align: center">
+
+  <% include ./_output_payment_info %>
+
+
 
       <% if(current_user.credit_card[0]) { %>
         <form action="/dashboard/payment/delete" method="post">
