@@ -44,7 +44,7 @@ app.use('/vendor/bootstrap', express.static('node_modules/bootstrap/dist')); // 
 app.use('/vendor/font-awesome', express.static('node_modules/font-awesome')); // redirect CSS bootstrap
 app.use('/vendor/bootstrap-validator', express.static('node_modules/bootstrap-validator/dist')); // redirect CSS bootstrap
 app.use(express.static('assets'));
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));  // uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));  // uncomment after placing favicon in /public
 
 
 // view engine setup
